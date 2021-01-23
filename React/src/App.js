@@ -2,7 +2,8 @@ import React  from "react";
 import './App.css';
 import Layout from "./Layouts/formLayout";
 import SearchBar from "./Layouts/SearchBar";
-import TableLayout from "./Layouts/Table"
+import TableLayout from "./Layouts/Table";
+import GraphComp from "./Layouts/GraphComponent";
 import {Modal, Button} from "react-bootstrap"
 
 
@@ -143,15 +144,20 @@ class App extends React.Component{
             onClickSubmit = {this.onClickSubmit}
             onChangeAction = {this.onChangeAction}
             modal = {false}/>
+
           <SearchBar
             onChangeAction = {this.onChangeAction}
             onClickSearch = {this.onClickSearch}
             getAllData = {this.getAllData}/>
+
           <TableLayout
             tableData = {this.state.tableData}
             onDelete = {this.onDelete}
             onEdit = {this.onEdit}
           />
+
+          <GraphComp/>
+
 
           {/* Modal */}
           <Modal show={this.state.modelStatus} onHide={this.close}>

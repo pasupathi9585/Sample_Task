@@ -103,6 +103,36 @@ router.get("/getAll",async (req,res) =>{
     }
     })
 
+// chart
+router.get("/getChart",async (req,res) =>{
+    try{
+    //Get all Datas From Database
+    var userdata = await User.find({})
+    var filterdDate = userdata.map((data, i)=>{
+        return data.createdDate.toLocaleDateString()
+    })
+    //Get unique data
+    var unique = [...new Set(filterdDate)]
+
+    let Array = []
+    let filterdArray = unique.map((data, i)=>{
+        let date = data;
+        let filterUser = userdata.filter(dates => dates.createdDate.toLocaleDateString() == date)
+        return filterUser
+        })
+    if(filterdArray){
+        res.status(200).json({ 
+            ChartData: filterdArray
+            })
+    }else{
+        res.status(400).json({err: "No data found"})
+    }
+    }catch(err){
+        res.status(400).json(err)
+    }
+    })
+
+
 
 
 module.exports = router;

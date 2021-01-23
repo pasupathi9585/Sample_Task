@@ -1,7 +1,6 @@
 import '../App.css';
 import React  from "react";
-import {Form,Button} from 'react-bootstrap'
-import {Row, Col} from "react-bootstrap"
+import {Row, Col, Form, Button} from 'react-bootstrap'
 
 class SearchBar extends React.Component {
 
